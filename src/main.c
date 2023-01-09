@@ -6,11 +6,11 @@
 /*   By: ecabanas <ecabanas@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:38:21 by ecabanas          #+#    #+#             */
-/*   Updated: 2023/01/09 11:57:25 by ecabanas         ###   ########.fr       */
+/*   Updated: 2023/01/09 12:26:16 by ecabanas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minilibx_macos/mlx.h"
+#include "../lib/minilibx_macos/mlx.h"
 #include <unistd.h>
 
 void	ft_putchar(char c)
