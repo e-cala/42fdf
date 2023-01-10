@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ecabanas <ecabanas@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/09 10:38:21 by ecabanas          #+#    #+#             */
-/*   Updated: 2023/01/10 12:16:31 by ecabanas         ###   ########.fr       */
+/*   Created: 2023/01/10 13:02:39 by ecabanas          #+#    #+#             */
+/*   Updated: 2023/01/10 13:02:40 by ecabanas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ void	ft_putchar(char c, int fd)
 */
 int	deal_key(int key, void *param)
 {
-	ft_putchar_fd('X', 1);
+	(void)key;
+    (void)param;
+    ft_putchar_fd('X', 1);
 	return (0);
 }
 
@@ -59,7 +61,6 @@ int main()
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
-
 	mlx_ptr = mlx_init();
 	win_ptr = mlx_new_window(mlx_ptr, WIN_WIDTH, WIN_HEIGHT, "mlx 42");
 	mlx_pixel_put(mlx_ptr, win_ptr, 250, 250, 0xFFFFFFF);
@@ -68,3 +69,4 @@ int main()
 	return (0);
 }
 */
+
