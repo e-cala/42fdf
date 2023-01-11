@@ -27,5 +27,7 @@ typedef struct s_data {
 	int		endian;
 }			t_data;
 
-int	deal_key(int key, void *param);
+int		deal_key(int key, void *param);
+void    drawline(int x0, int y0, int x1, int y1, t_data *img);
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 #endif

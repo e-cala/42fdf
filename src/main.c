@@ -40,6 +40,8 @@ int	main(void)
 	//minilibx method - red
 	mlx_pixel_put(mlx_ptr, win_ptr, 250, 250, 0x00FF0000);
 	mlx_key_hook(win_ptr, deal_key, (void *)0);
+
+	drawline(0, 0, 250, 250, &img);
 	
 	mlx_loop(mlx_ptr);
 	return (0);
