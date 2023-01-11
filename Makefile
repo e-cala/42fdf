@@ -11,7 +11,6 @@
 # **************************************************************************** #
 
 #1. mejorar lib/libft
-#2. mejorar el tema de LIBFT y regla $(NAME)
 #3. crear directorios para ficherros .o y .d
 #4. anadir norma para dependencias de ficheros
 
@@ -19,10 +18,12 @@ NAME		=	fdf
 MLX			=	minilibx_macos/
 HEADER		=	includes/fdf.h
 
-SRC_PATH 	=	src/
-SRC			=	main.c
-SRCS		=	$(addprefix $(SRC_PATH), $(SRC))
-OBJ			=	$(SRCS:.c=.o)
+SRC	= src
+OBJ = obj
+SRCS = $(wildcard $(SRC)/*.c)
+OBJS = $(patsubst $(SRC)/%.c, $(OBJ)/%.o, $(SRCS))
+
+
 MINILIBX	=	-L ./lib/$(MLX) -lmlx
 LIBFT		=	-L lib/libft -lft
 FRAMEWORK	=	-framework OpenGL -framework AppKit
@@ -30,7 +31,7 @@ FRAMEWORK	=	-framework OpenGL -framework AppKit
 CC			=	gcc
 CFLAGS		=	-Wall -Wextra -Werror
 
-RM			= rm -f
+RM			= rm -rf
 
 ##########################################################################
 all: $(NAME)
@@ -38,9 +39,14 @@ all: $(NAME)
 libft:
 	make -C lib/libft
 
-$(NAME): libft $(OBJ) $(HEADER)
-#	$(CC) $(CFLAGS) -I $(HEADER) $(OBJ) $(MINILIBX) ./lib/libft/libft.a $(FRAMEWORK) -o $@
-	$(CC) $(CFLAGS) -I $(HEADER) $(OBJ) $(MINILIBX) $(LIBFT) $(FRAMEWORK) -o $@
+$(NAME): libft $(OBJS) $(HEADER)
+	$(CC) $(CFLAGS) -I $(HEADER) $(OBJS) $(MINILIBX) $(LIBFT) $(FRAMEWORK) -o $@
+
+$(OBJ)/%.o: $(SRC)/%.c $(OBJ)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJ):
+	mkdir $@
 
 clean:
 	make -C lib/libft clean
@@ -53,12 +59,5 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
-
-
-#%.o: %.c
-#	$(CC) $(CFLAGS) -I$(mlx) -c $< -o $@
-#
-#$(NAME): $(OBJ)
-#	$(CC) $(OBJ) -L$(mlx) -l$(mlx) -framework -OpenGL AppKit -o $(NAME)
 
 
