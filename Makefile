@@ -11,8 +11,6 @@
 # **************************************************************************** #
 
 #1. mejorar lib/libft
-#3. crear directorios para ficherros .o y .d
-#4. anadir norma para dependencias de ficheros
 
 NAME		=	fdf
 MLX			=	minilibx_macos/
@@ -22,14 +20,15 @@ SRC	= src
 OBJ = obj
 SRCS = $(wildcard $(SRC)/*.c)
 OBJS = $(patsubst $(SRC)/%.c, $(OBJ)/%.o, $(SRCS))
+DEPS = $(addsuffix .d, $(basename $(SRCS)))
 
 
 MINILIBX	=	-L ./lib/$(MLX) -lmlx
-LIBFT		=	-L lib/libft -lft
+LIBFT		=	-L ./lib/libft -lft
 FRAMEWORK	=	-framework OpenGL -framework AppKit
 
 CC			=	gcc
-CFLAGS		=	-Wall -Wextra -Werror
+CFLAGS		=	-Wall -Wextra -Werror -MMD
 
 RM			= rm -rf
 
@@ -58,6 +57,6 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all libft clean fclean re
 
 

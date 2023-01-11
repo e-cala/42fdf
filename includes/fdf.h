@@ -27,5 +27,5 @@ typedef struct s_data {
 	int		endian;
 }			t_data;
 
-
+int	deal_key(int key, void *param);
 #endif
