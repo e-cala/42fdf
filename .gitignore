@@ -3,4 +3,6 @@
 *a.out
 *.swp
 .DS_Store
+*.a
+.vscode/
 fdf

@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 #1. mejorar lib/libft
-#2. mejorar el tema de AFLAGS y regla $(NAME)
+#2. mejorar el tema de LIBFT y regla $(NAME)
 #3. crear directorios para ficherros .o y .d
 #4. anadir norma para dependencias de ficheros
 
@@ -24,25 +24,23 @@ SRC			=	main.c
 SRCS		=	$(addprefix $(SRC_PATH), $(SRC))
 OBJ			=	$(SRCS:.c=.o)
 MINILIBX	=	-L ./lib/$(MLX) -lmlx
+LIBFT		=	-L lib/libft -lft
 FRAMEWORK	=	-framework OpenGL -framework AppKit
 
 CC			=	gcc
 CFLAGS		=	-Wall -Wextra -Werror
-AFLAGS		=	-L lib/libft -lft
 
 RM			= rm -f
 
 ##########################################################################
 all: $(NAME)
 
-#$(NAME): $(OBJ) $(HEADER)
-#	$(CC) $(CFLAGS) -I $(HEADER) $(OBJ) -o $@
-
 libft:
 	make -C lib/libft
 
 $(NAME): libft $(OBJ) $(HEADER)
-	$(CC) $(CFLAGS) -I $(HEADER) $(OBJ) $(MINILIBX) ./lib/libft/libft.a $(FRAMEWORK) -o $@
+#	$(CC) $(CFLAGS) -I $(HEADER) $(OBJ) $(MINILIBX) ./lib/libft/libft.a $(FRAMEWORK) -o $@
+	$(CC) $(CFLAGS) -I $(HEADER) $(OBJ) $(MINILIBX) $(LIBFT) $(FRAMEWORK) -o $@
 
 clean:
 	make -C lib/libft clean
