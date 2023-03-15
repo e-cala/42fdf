@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   control_keys.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ecabanas <ecabanas@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/10 10:37:43 by ecabanas          #+#    #+#             */
-/*   Updated: 2023/01/10 12:11:31 by ecabanas         ###   ########.fr       */
+/*   Created: 2023/03/15 17:03:09 by ecabanas          #+#    #+#             */
+/*   Updated: 2023/03/15 17:03:12 by ecabanas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#include "../lib/minilibx_macos/mlx.h"
+#include "../lib/libft/libft.h"
+#include "../includes/fdf.h"
+#include "../includes/defines.h"
+#include "../includes/keycodes.h"
 
-# include <unistd.h>
-# include <stdlib.h> 
-# include "defines.h"
-
-void	drawline(t_line *line, t_data *img);
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-
-/*		key_hooks		*/
-int		esc_hook(int keycode, t_vars *vars);
-#endif
+int esc_hook(int keycode, t_vars *vars)
+{
+	(void)*vars;
+	if (keycode == KEY_ESC)
+		mlx_destroy_window(vars->mlx, vars->win);
+    else if (keycode == 0)
+        ft_putendl_fd("hello", 1);
+    return (0);
+}

@@ -13,37 +13,42 @@
 #include "../lib/minilibx_macos/mlx.h"
 #include "../lib/libft/libft.h"
 #include "../includes/fdf.h"
+#include "../includes/defines.h"
 
 
+// load map
+// draw map
+// hooks
+//free ptrs
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+
+void	sys_init(t_vars *vars)
 {
-	char	*dst;
-
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
+	vars->mlx = mlx_init();
+	vars->win = mlx_new_window(vars->mlx, WIN_WIDTH, WIN_HEIGHT, "mlx 42");
 }
 
-int	main(void)
+int	main(int argc, char *argv[])
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
+	t_vars	vars;
 	t_data	img;
+	t_line	line;
 
-	mlx_ptr = mlx_init();
-	win_ptr = mlx_new_window(mlx_ptr, WIN_WIDTH, WIN_HEIGHT, "mlx 42");
-	img.img = mlx_new_image(mlx_ptr, WIN_WIDTH, WIN_HEIGHT);
+	line.x0 = 0;
+	line.y0 = 0;
+	line.x1 = 250;
+	line.y1 = 250;
+	line.color = 0x08d86FFF;
+	(void) argv;
+	if (argc != 2)
+		return (0);
+	sys_init(&vars);
+	img.img = mlx_new_image(vars.mlx, WIN_WIDTH, WIN_HEIGHT);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
-	//custom method - white
-	my_mlx_pixel_put(&img, 300, 300, 0x00FFFFFF);
-	mlx_put_image_to_window(mlx_ptr, win_ptr, img.img, 0, 0);
-	//minilibx method - red
-	mlx_pixel_put(mlx_ptr, win_ptr, 250, 250, 0x00FF0000);
-	mlx_key_hook(win_ptr, deal_key, (void *)0);
+	mlx_key_hook(vars.win, esc_hook, &vars);
+	drawline(&line, &img);
+	mlx_put_image_to_window(vars.mlx, vars.win, img.img, 0, 0);
 
-	drawline(0, 0, 250, 250, &img);
-	
-	mlx_loop(mlx_ptr);
+	mlx_loop(vars.mlx);
 	return (0);
 }
-
