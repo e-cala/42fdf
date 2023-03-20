@@ -15,6 +15,8 @@
 
 # include <unistd.h>
 # include <stdlib.h> 
+# include <unistd.h> // read() function
+# include <fcntl.h> // open() function
 # include "defines.h"
 
 void	drawline(t_line *line, t_data *img);

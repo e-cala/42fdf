@@ -14,8 +14,8 @@
 #ifndef DEFINES_H
 # define DEFINES_H
 
-# define WIN_WIDTH 1920
-# define WIN_HEIGHT 1080
+# define WIN_WIDTH  720 //1920
+# define WIN_HEIGHT 720 // 1080
 
 typedef struct s_data {
 	void	*img;
@@ -37,5 +37,11 @@ typedef struct s_line {
 	int	y1;
 	int	color;
 }	t_line;
+
+typedef struct s_point {
+	int	x;
+	int	y;
+	int	color;
+}	t_point;
 
 #endif
