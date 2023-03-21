@@ -21,6 +21,7 @@
 3. crear hooks para rotar cubo - rotacion / escala / posicion
 */
 
+// projection matrix
 void	sys_init(t_meta *meta)
 {
 	meta->vars.mlx = mlx_init();
