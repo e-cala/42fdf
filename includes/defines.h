@@ -16,6 +16,10 @@
 
 # define WIN_WIDTH  720 //1920
 # define WIN_HEIGHT 720 // 1080
+# define X 0
+# define Y 1
+
+
 
 typedef struct s_data {
 	void	*img;
@@ -39,9 +43,20 @@ typedef struct s_line {
 }	t_line;
 
 typedef struct s_point {
-	int	x;
-	int	y;
+	int	axis[3];
 	int	color;
 }	t_point;
+
+typedef struct s_cube {
+	t_point	points[8];
+}	t_cube;
+
+typedef struct s_meta {
+	t_vars	vars;
+	t_data	img;
+	t_cube	cube;
+	t_point	point;
+
+}	t_meta;
 
 #endif

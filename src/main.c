@@ -15,64 +15,80 @@
 #include "../includes/fdf.h"
 #include "../includes/defines.h"
 
-// load map
-// draw map
-// hooks
-//free ptrs
 /*
 1. crear estructura punto 
 2. dibujar 8 puntos
 3. crear hooks para rotar cubo - rotacion / escala / posicion
 */
 
-void	sys_init(t_vars *vars)
+void	sys_init(t_meta *meta)
 {
-	vars->mlx = mlx_init();
-	vars->win = mlx_new_window(vars->mlx, WIN_WIDTH, WIN_HEIGHT, "mlx 42");
+	meta->vars.mlx = mlx_init();
+	meta->vars.win = mlx_new_window(meta->vars.mlx,
+			WIN_WIDTH, WIN_HEIGHT, "mlx 42");
+	meta->img.img = mlx_new_image(meta->vars.mlx,
+			WIN_WIDTH, WIN_HEIGHT);
+	meta->img.addr = mlx_get_data_addr(meta->img.img,
+			&meta->img.bits_per_pixel,
+			&meta->img.line_length, &meta->img.endian);
 }
 
-/*
+void	init_cube(t_meta *meta)
+{
+	meta->cube.points[0].color = 0x0FF0000; //up-left
+	meta->cube.points[0].axis[X] = 150;
+	meta->cube.points[0].axis[Y] = 150;
+	meta->cube.points[1].color = 0x0FFFFFF;
+	meta->cube.points[1].axis[X] = 170;
+	meta->cube.points[1].axis[Y] = 150;
+	meta->cube.points[2].color = 0x0FFFFFF;
+	meta->cube.points[2].axis[X] = 150;
+	meta->cube.points[2].axis[Y] = 170;
+	meta->cube.points[3].color = 0x008800; //down-right
+	meta->cube.points[3].axis[X] = 170;
+	meta->cube.points[3].axis[Y] = 170;
+	meta->cube.points[4].color = 0x0FF0000;
+	meta->cube.points[4].axis[X] = 170;
+	meta->cube.points[4].axis[Y] = 130;
+	meta->cube.points[5].color = 0x0FFFFFF;
+	meta->cube.points[5].axis[X] = 190;
+	meta->cube.points[5].axis[Y] = 130;
+	meta->cube.points[6].color = 0x0FFFFFF;
+	meta->cube.points[6].axis[X] = 170;
+	meta->cube.points[6].axis[Y] = 150;
+	meta->cube.points[7].color = 0x008800;
+	meta->cube.points[7].axis[X] = 190;
+	meta->cube.points[7].axis[Y] = 150;
+}
+
+void	paint(t_meta *meta)
+{
+	int	i;
+
+	i = 0;
+	while (i < 8)
+	{
+		my_mlx_pixel_put(&meta->img,
+			meta->cube.points[i].axis[X],
+			meta->cube.points[i].axis[Y],
+			meta->cube.points[i].color);
+		mlx_put_image_to_window(&meta->vars.mlx,
+			meta->vars.win, meta->img.img,
+			meta->cube.points[i].axis[X],
+			meta->cube.points[i].axis[Y]);
+		i++;
+	}
+}
+
 int	main(void)
 {
-	t_vars	vars;
-	t_data	img;
-	t_line	line;
+	t_meta	meta;
 
-	line.x0 = 100;
-	line.y0 = 100;
-	line.x1 = 250;
-	line.y1 = 250;
-	line.color = 0x08d86FFF;
-
-	sys_init(&vars);
-	img.img = mlx_new_image(vars.mlx, WIN_WIDTH, WIN_HEIGHT);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
-	mlx_key_hook(vars.win, esc_hook, &vars);
-	//drawline(&line, &img);
-	my_mlx_pixel_put(img.img, line.x0, line.y0, line.color);
-	mlx_put_image_to_window(vars.mlx, vars.win, img.img, line.x0, line.y0);
-	my_mlx_pixel_put(img.img, line.x1, line.y1, line.color);
-	mlx_put_image_to_window(vars.mlx, vars.win, img.img, line.x1, line.y1);
-
-	mlx_loop(vars.mlx);
-	return (0);
-}*/
-
-int	main(void)
-{
-	t_vars	vars;
-	t_data img;
-	t_point	point;
-
-	point.x = 250;
-	point.y = 250;
-	point.color = 0x0FFFFFF;
-	sys_init(&vars);
-	img.img = mlx_new_image(vars.mlx, WIN_WIDTH, WIN_HEIGHT);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
-	my_mlx_pixel_put(img.img, point.x, point.y, point.color);
-	mlx_put_image_to_window(vars.mlx, vars.win, img.img, point.x, point.y);
-	mlx_key_hook(vars.win, esc_hook, &vars);
-	mlx_loop(vars.mlx);
+	sys_init(&meta);
+	init_cube(&meta);
+	paint(&meta);
+	mlx_key_hook(meta.vars.win, esc_hook, &meta.vars);
+	mlx_loop(meta.vars.mlx);
+	free(meta.vars.mlx);
 	return (0);
 }
