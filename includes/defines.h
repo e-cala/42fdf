@@ -35,12 +35,21 @@ typedef struct s_vars {
 }t_vars;
 
 typedef struct s_line {
-	int	x0;
-	int	y0;
-	int	x1;
-	int	y1;
+	int x;
+	int y;
+	int	dx;
+	int	dy;
+	int	p;
 	int	color;
 }	t_line;
+
+// typedef struct s_line {
+// 	int	x0;
+// 	int	y0;
+// 	int	x1;
+// 	int	y1;
+// 	int	color;
+// }	t_line;
 
 typedef struct s_point {
 	int	axis[3];

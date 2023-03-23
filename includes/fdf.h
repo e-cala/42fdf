@@ -19,7 +19,8 @@
 # include <fcntl.h> // open() function
 # include "defines.h"
 
-void	drawline(t_line *line, t_data *img);
+void	drawline(void *line, t_data *img);
+void	drawline2(t_cube *cube, t_data *img);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 /*		key_hooks		*/
