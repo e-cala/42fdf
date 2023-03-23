@@ -56,6 +56,7 @@ typedef struct s_meta {
 	t_data	img;
 	t_cube	cube;
 	t_point	point;
+	t_line	line;
 
 }	t_meta;
 

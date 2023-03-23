@@ -85,9 +85,18 @@ int	main(void)
 {
 	t_meta	meta;
 
+	meta.line.x0 = 0;
+	meta.line.y0 = 0;
+	meta.line.x1 = 100;
+	meta.line.y1 = 100;
+	meta.line.color = 0x0FFFFFF;
 	sys_init(&meta);
 	init_cube(&meta);
 	paint(&meta);
+	drawline(&meta.line, &meta.img);
+	mlx_put_image_to_window(meta.vars.mlx,
+		meta.vars.win,
+		meta.img.img, 0, 0);
 	mlx_key_hook(meta.vars.win, esc_hook, &meta.vars);
 	mlx_loop(meta.vars.mlx);
 	free(meta.vars.mlx);
