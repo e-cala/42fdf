@@ -19,6 +19,11 @@
 # define X 0
 # define Y 1
 
+# define WHITE 	0x0FFFFFF
+# define RED 	0x0FF0000
+# define YELLOW 0x0FFFF00
+# define GREEN 	0x0FF000
+
 
 
 typedef struct s_data {
@@ -34,22 +39,22 @@ typedef struct s_vars {
 	void	*win;
 }t_vars;
 
-typedef struct s_line {
-	int x;
-	int y;
-	int	dx;
-	int	dy;
-	int	p;
-	int	color;
-}	t_line;
-
 // typedef struct s_line {
-// 	int	x0;
-// 	int	y0;
-// 	int	x1;
-// 	int	y1;
+// 	int x;
+// 	int y;
+// 	int	dx;
+// 	int	dy;
+// 	int	p;
 // 	int	color;
 // }	t_line;
+
+typedef struct s_line {
+	int	x0;
+	int	y0;
+	int	x1;
+	int	y1;
+	int	color;
+}	t_line;
 
 typedef struct s_point {
 	int	axis[3];
@@ -58,14 +63,13 @@ typedef struct s_point {
 
 typedef struct s_cube {
 	t_point	points[8];
+	t_line	line;
 }	t_cube;
 
 typedef struct s_meta {
 	t_vars	vars;
 	t_data	img;
 	t_cube	cube;
-	t_point	point;
-	t_line	line;
 
 }	t_meta;
 

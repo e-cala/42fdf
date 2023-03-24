@@ -34,34 +34,6 @@ void	sys_init(t_meta *meta)
 			&meta->img.line_length, &meta->img.endian);
 }
 
-void	init_cube(t_meta *meta)
-{
-	meta->cube.points[0].color = 0x0FF0000; //up-left
-	meta->cube.points[0].axis[X] = 150;
-	meta->cube.points[0].axis[Y] = 150;
-	meta->cube.points[1].color = 0x0FFFFFF;
-	meta->cube.points[1].axis[X] = 170;
-	meta->cube.points[1].axis[Y] = 150;
-	meta->cube.points[2].color = 0x0FFFFFF;
-	meta->cube.points[2].axis[X] = 150;
-	meta->cube.points[2].axis[Y] = 170;
-	meta->cube.points[3].color = 0x008800; //down-right
-	meta->cube.points[3].axis[X] = 170;
-	meta->cube.points[3].axis[Y] = 170;
-	meta->cube.points[4].color = 0x0FF0000;
-	meta->cube.points[4].axis[X] = 170;
-	meta->cube.points[4].axis[Y] = 130;
-	meta->cube.points[5].color = 0x0FFFFFF;
-	meta->cube.points[5].axis[X] = 190;
-	meta->cube.points[5].axis[Y] = 130;
-	meta->cube.points[6].color = 0x0FFFFFF;
-	meta->cube.points[6].axis[X] = 170;
-	meta->cube.points[6].axis[Y] = 150;
-	meta->cube.points[7].color = 0x008800;
-	meta->cube.points[7].axis[X] = 190;
-	meta->cube.points[7].axis[Y] = 150;
-}
-
 void	paint(t_meta *meta)
 {
 	int	i;
@@ -81,23 +53,90 @@ void	paint(t_meta *meta)
 	}
 }
 
+void	init_cube(t_meta *meta)
+{
+	meta->cube.points[0].color = WHITE;	//front-up-left
+	meta->cube.points[0].axis[X] = 150;
+	meta->cube.points[0].axis[Y] = 150;
+	meta->cube.points[1].color = WHITE;	//front-up-right SOLAPA
+	meta->cube.points[1].axis[X] = 170;
+	meta->cube.points[1].axis[Y] = 150;
+	meta->cube.points[2].color = WHITE;	//front-down-left
+	meta->cube.points[2].axis[X] = 150;
+	meta->cube.points[2].axis[Y] = 170;
+	meta->cube.points[3].color = WHITE;	//front-down-right
+	meta->cube.points[3].axis[X] = 170;
+	meta->cube.points[3].axis[Y] = 170;
+	meta->cube.points[4].color = YELLOW; // back-up-left
+	meta->cube.points[4].axis[X] = 170;
+	meta->cube.points[4].axis[Y] = 130;
+	meta->cube.points[5].color = YELLOW; //back-up-right
+	meta->cube.points[5].axis[X] = 190;
+	meta->cube.points[5].axis[Y] = 130;
+	meta->cube.points[6].color = WHITE;	//back-down-left SOLAPA
+	meta->cube.points[6].axis[X] = 170;
+	meta->cube.points[6].axis[Y] = 150;
+	meta->cube.points[7].color = WHITE;	//back-down-right
+	meta->cube.points[7].axis[X] = 190;
+	meta->cube.points[7].axis[Y] = 150;
+}
+
+void	cube_edges(t_meta *meta)
+{
+	meta->cube.line.x0 = meta->cube.points[0].axis[X];
+	meta->cube.line.x1 = meta->cube.points[1].axis[X];
+	meta->cube.line.y0 = meta->cube.points[0].axis[Y];
+	meta->cube.line.y1 = meta->cube.points[1].axis[Y];
+	meta->cube.line.color = GREEN;
+}
+
+void	cube_edges2(t_meta *meta)
+{
+	meta->cube.line.x0 = meta->cube.points[1].axis[X];
+	meta->cube.line.x1 = meta->cube.points[2].axis[X];
+	meta->cube.line.y0 = meta->cube.points[1].axis[Y];
+	meta->cube.line.y1 = meta->cube.points[2].axis[Y];
+	meta->cube.line.color = YELLOW;
+}
+
+void	cube_edges3(t_meta *meta)
+{
+	meta->cube.line.x0 = meta->cube.points[2].axis[X];
+	meta->cube.line.x1 = meta->cube.points[3].axis[X];
+	meta->cube.line.y0 = meta->cube.points[2].axis[Y];
+	meta->cube.line.y1 = meta->cube.points[3].axis[Y];
+	meta->cube.line.color = WHITE;
+}
+
+void	cube_edges4(t_meta *meta)
+{
+	meta->cube.line.x0 = meta->cube.points[3].axis[X];
+	meta->cube.line.x1 = meta->cube.points[4].axis[X];
+	meta->cube.line.y0 = meta->cube.points[3].axis[Y];
+	meta->cube.line.y1 = meta->cube.points[4].axis[Y];
+	meta->cube.line.color = RED;
+}
+
 int	main(void)
 {
 	t_meta	meta;
 
-	//meta.line.x0 = 0;
-	//meta.line.y0 = 0;
-	//meta.line.x1 = 100;
-	//meta.line.y1 = 100;
-	//meta.line.color = 0x0FFFFFF;
 	sys_init(&meta);
 	init_cube(&meta);
 	paint(&meta);
-	drawline2(&meta.cube, &meta.img);
-	//drawline(&meta.line, &meta.img);
+	cube_edges(&meta);
+	drawline(&meta.cube.line, &meta.img);
+	cube_edges2(&meta);
+	drawline(&meta.cube.line, &meta.img);
+	cube_edges3(&meta);
+	drawline(&meta.cube.line, &meta.img);
+	cube_edges4(&meta);
+	drawline(&meta.cube.line, &meta.img);
 	mlx_put_image_to_window(meta.vars.mlx,
 		meta.vars.win,
 		meta.img.img, 0, 0);
+
+
 	mlx_key_hook(meta.vars.win, esc_hook, &meta.vars);
 	mlx_loop(meta.vars.mlx);
 	free(meta.vars.mlx);
