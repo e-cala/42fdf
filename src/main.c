@@ -16,9 +16,11 @@
 #include "../includes/defines.h"
 
 /*
-1. crear estructura punto 
-2. dibujar 8 puntos
-3. crear hooks para rotar cubo - rotacion / escala / posicion
+1. Crear estructuras general, punto, vars, s_data, map
+2. Drawline
+3. Funciion zoom
+4. Cargar mapa
+5. Crear hooks rotar cubo - rotacion / escala / posicion
 */
 
 // projection matrix
@@ -27,13 +29,60 @@ void	sys_init(t_meta *meta)
 	meta->vars.mlx = mlx_init();
 	meta->vars.win = mlx_new_window(meta->vars.mlx,
 			WIN_WIDTH, WIN_HEIGHT, "mlx 42");
-	meta->img.img = mlx_new_image(meta->vars.mlx,
+	meta->data.img = mlx_new_image(meta->vars.mlx,
 			WIN_WIDTH, WIN_HEIGHT);
-	meta->img.addr = mlx_get_data_addr(meta->img.img,
-			&meta->img.bits_per_pixel,
-			&meta->img.line_length, &meta->img.endian);
+	meta->data.addr = mlx_get_data_addr(meta->data.img,
+			&meta->data.bits_per_pixel,
+			&meta->data.line_length, &meta->data.endian);
 }
 
+int	main(void)
+{
+	t_meta	meta;
+	t_point	start;
+	t_point	end;
+
+	sys_init(&meta);
+	start.axis[X] = 300;
+	start.axis[Y] = 300;
+	start.axis[2] = 0;
+	start.color = GREEN;
+	end.axis[X] = 500;
+	end.axis[Y] = 250;
+	end.axis[2] = 0;
+	end.color = YELLOW;
+	plot_line(&meta, start, end);
+	
+
+	mlx_put_image_to_window(meta.vars.mlx,
+		meta.vars.win,
+		meta.data.img, 0, 0);
+
+	mlx_key_hook(meta.vars.win, esc_hook, &meta.vars);
+	mlx_loop(meta.vars.mlx);
+	free(meta.vars.mlx);
+	return (0);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 void	paint(t_meta *meta)
 {
 	int	i;
@@ -124,21 +173,25 @@ int	main(void)
 	sys_init(&meta);
 	init_cube(&meta);
 	paint(&meta);
+	t_line algo;
+	algo.x0 =  150;
+	algo.x1 = 170;
+	algo.y0 = 170;
+	algo.y1 = 175;
+	algo.color = GREEN;
+
+	drawline(&algo, &meta);
 	cube_edges(&meta);
 	drawline(&meta.cube.line, &meta.img);
-	cube_edges2(&meta);
-	drawline(&meta.cube.line, &meta.img);
 	cube_edges3(&meta);
-	drawline(&meta.cube.line, &meta.img);
-	cube_edges4(&meta);
 	drawline(&meta.cube.line, &meta.img);
 	mlx_put_image_to_window(meta.vars.mlx,
 		meta.vars.win,
 		meta.img.img, 0, 0);
-
 
 	mlx_key_hook(meta.vars.win, esc_hook, &meta.vars);
 	mlx_loop(meta.vars.mlx);
 	free(meta.vars.mlx);
 	return (0);
 }
+*/

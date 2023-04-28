@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #ifndef DEFINES_H
 # define DEFINES_H
 
@@ -23,8 +22,6 @@
 # define RED 	0x0FF0000
 # define YELLOW 0x0FFFF00
 # define GREEN 	0x0FF000
-
-
 
 typedef struct s_data {
 	void	*img;
@@ -39,38 +36,19 @@ typedef struct s_vars {
 	void	*win;
 }t_vars;
 
-// typedef struct s_line {
-// 	int x;
-// 	int y;
-// 	int	dx;
-// 	int	dy;
-// 	int	p;
-// 	int	color;
-// }	t_line;
-
-typedef struct s_line {
-	int	x0;
-	int	y0;
-	int	x1;
-	int	y1;
-	int	color;
-}	t_line;
-
 typedef struct s_point {
 	int	axis[3];
 	int	color;
 }	t_point;
 
-typedef struct s_cube {
-	t_point	points[8];
-	t_line	line;
-}	t_cube;
+typedef struct s_map {
+	t_point	*points;
+}	t_map;
 
 typedef struct s_meta {
 	t_vars	vars;
-	t_data	img;
-	t_cube	cube;
-
+	t_data	data;
+	t_map	map;
 }	t_meta;
 
 #endif
