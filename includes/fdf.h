@@ -29,4 +29,7 @@ void	plot_line(t_meta *meta, t_point start, t_point end);
 
 /*		key_hooks		*/
 int		esc_hook(int keycode, t_vars *vars);
+
+/*      get_next_line.c */
+char    *get_next_line(int fd);
 #endif

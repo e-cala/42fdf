@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   gnl_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ecabanas <ecabanas@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/19 11:46:20 by ecabanas          #+#    #+#             */
-/*   Updated: 2022/08/25 09:28:48 by ecabanas         ###   ########.fr       */
+/*   Created: 2023/04/29 10:33:03 by ecabanas          #+#    #+#             */
+/*   Updated: 2023/04/29 10:37:09 by ecabanas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../includes/gnl.h"
 
 int	ft_found_newline(char *s)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	while (s[i])
@@ -24,58 +24,6 @@ int	ft_found_newline(char *s)
 		i++;
 	}
 	return (0);
-}
-
-char	*ft_strjoin(char *s1, char *s2)
-{
-	char	*ptr;
-	int		i;
-	int		j;
-
-	if (!s1 && !s2)
-		return (NULL);
-	i = 0;
-	while (s1[i])
-		i++;
-	j = 0;
-	while (s2[j])
-		j++;
-	ptr = calloc(i + j +1, sizeof * ptr);
-	if (!ptr)
-		return (NULL);
-	i = 0;
-	while (s1[i])
-	{
-		ptr[i] = s1[i];
-		i++;
-	}
-	j = 0;
-	while (s2[j])
-		ptr[i++] = s2[j++];
-	return (ptr);
-}
-
-char	*ft_strdup(char	*s)
-{
-	char	*ptr;
-	int		i;
-
-	if (!s)
-		return (ft_strdup(""));
-	i = 0;
-	while (s[i])
-		i++;
-	ptr = calloc(i + 1, sizeof * ptr);
-	if (!ptr)
-		return (NULL);
-	i = 0;
-	while (s[i])
-	{
-		ptr[i] = s[i];
-		i++;
-	}
-	ptr[i] = '\0';
-	return (ptr);
 }
 
 void	ft_free(char **s1, char **s2, char **s3)

@@ -17,6 +17,7 @@
 # define WIN_HEIGHT 720 // 1080
 # define X 0
 # define Y 1
+# define Z 2
 
 # define WHITE 	0x0FFFFFF
 # define RED 	0x0FF0000

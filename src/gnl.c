@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   gnl.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ecabanas <ecabanas@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/19 11:45:02 by ecabanas          #+#    #+#             */
-/*   Updated: 2022/08/25 09:31:19 by ecabanas         ###   ########.fr       */
+/*   Created: 2023/04/29 10:40:00 by ecabanas          #+#    #+#             */
+/*   Updated: 2023/04/29 10:40:05 by ecabanas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "get_next_line.h"
+
+#include "../includes/gnl.h"
+#include "../lib/libft/libft.h"
 
 // IMPORTANTE QUE SEA FT_CALLOC (errores con calloc)
-char	*get_before_newline(char *s)
+static char	*get_before_newline(char *s)
 {
 	char	*ptr;
 	int		i;
@@ -41,7 +43,7 @@ char	*get_before_newline(char *s)
 }
 
 // IMPORTANTE QUE SEA FT_CALLOC o CALLOC (errores con malloc)
-char	*get_after_newline(char *s)
+static char	*get_after_newline(char *s)
 {
 	char	*ptr;
 	int		i;
@@ -69,7 +71,7 @@ char	*get_after_newline(char *s)
 }
 
 // NO NECESARIO FT_CALLOC, MALLOC FUNCIONA TMB
-void	ft_read_line(int fd, char **storage, char **tmp)
+static void	ft_read_line(int fd, char **storage, char **tmp)
 {
 	char	*buf;
 	int		r;
@@ -97,7 +99,7 @@ void	ft_read_line(int fd, char **storage, char **tmp)
 	ft_free(&buf, 0, 0);
 }
 
-char	*ft_parse_line(char **storage, char **tmp)
+static char	*ft_parse_line(char **storage, char **tmp)
 {
 	char	*line;
 

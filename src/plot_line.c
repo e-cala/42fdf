@@ -63,7 +63,7 @@ static void	plot_line_high(t_meta *meta, t_point start, t_point end)
 	}
 	while (pixel.axis[Y] < end.axis[Y])
 	{
-		my_mlx_pixel_put(&meta->data, pixel.axis[X], pixel.axis[Y], WHITE);
+		my_mlx_pixel_put(&meta->data, pixel.axis[X], pixel.axis[Y], start.color);
 		if (pixels > 0)
 		{
 			pixel.axis[X] = pixel.axis[X] + xi;
@@ -95,7 +95,7 @@ static void	plot_line_low(t_meta *meta, t_point start, t_point end)
 	}
 	while (pixel.axis[X] < end.axis[X])
 	{
-		my_mlx_pixel_put(&meta->data, pixel.axis[X], pixel.axis[Y], YELLOW);
+		my_mlx_pixel_put(&meta->data, pixel.axis[X], pixel.axis[Y], start.color);
 		if (pixels > 0)
 		{
 			pixel.axis[Y] = pixel.axis[Y] + yi;
