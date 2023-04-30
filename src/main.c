@@ -40,6 +40,7 @@ void	sys_init(t_meta *meta)
 int	main(int argc, char *argv[])
 {
 	//t_meta	meta;
+	
 	int	fd;
 	char *line;
 	int	i;

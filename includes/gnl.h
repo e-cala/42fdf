@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>	//read() function
 # include <fcntl.h>  //open() function
+# include "../lib/libft/libft.h"
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 4

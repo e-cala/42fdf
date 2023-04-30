@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "../includes/gnl.h"
-#include "../lib/libft/libft.h"
 
 // IMPORTANTE QUE SEA FT_CALLOC (errores con calloc)
 static char	*get_before_newline(char *s)

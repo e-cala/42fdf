@@ -13,7 +13,8 @@
 #1. mejorar lib/libft
 
 NAME		=	fdf
-MLX			=	minilibx_macos/
+MLX_MAC		=	minilibx_macos/
+MLX_LI		=	mlx_linux/
 HEADER		=	includes/fdf.h
 
 SRC	= src
@@ -23,7 +24,8 @@ OBJS = $(patsubst $(SRC)/%.c, $(OBJ)/%.o, $(SRCS))
 DEPS = $(addsuffix .d, $(basename $(SRCS)))
 
 
-MINILIBX	=	-L ./lib/$(MLX) -lmlx
+MINILIBX	=	-L ./lib/$(MLX_MAC) -lmlx
+MINILIBX_LI	=	-L ./lib/$(MLX_LI) -lmlx
 LIBFT		=	-L ./lib/libft -lft
 FRAMEWORK	=	-framework OpenGL -framework AppKit
 
@@ -40,6 +42,9 @@ libft:
 
 $(NAME): libft $(OBJS) $(HEADER)
 	$(CC) $(CFLAGS) -I $(HEADER) $(OBJS) $(MINILIBX) $(LIBFT) $(FRAMEWORK) -o $@
+
+linux: libft $(OBJS) $(HEADER)
+	$(CC) $(CFLAGS) -I $(HEADER) $(OBJS) $(MINILIBX_LI) $(LIBFT) -lXext -lX11 -lm -lz -o $(NAME)
 
 $(OBJ)/%.o: $(SRC)/%.c $(OBJ)
 	$(CC) $(CFLAGS) -c $< -o $@
