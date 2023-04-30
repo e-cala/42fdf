@@ -17,21 +17,18 @@ char	*ft_strdup(const char *s1)
 	char	*ptr;
 	size_t	i;
 
-	i = 0;
-	while (s1[i])
-		i++;
-	ptr = malloc(sizeof (char) * i + 1);
-	i = 0;
+	if (!s1)
+		return (ft_strdup(""));
+	i = ft_strlen(s1);
+	ptr = calloc(i + 1, sizeof * ptr);
 	if (!ptr)
 		return (0);
-	else
+	i = 0;
+	while (s1[i])
 	{
-		while (s1[i])
-		{
-			ptr[i] = s1[i];
-			i++;
-		}
-		ptr[i] = '\0';
-		return (ptr);
+		ptr[i] = s1[i];
+		i++;
 	}
+	ptr[i] = '\0';
+	return (ptr);
 }

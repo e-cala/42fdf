@@ -11,9 +11,8 @@
 /* ************************************************************************** */
 
 #include "../lib/minilibx_macos/mlx.h"
-#include "../lib/libft/libft.h"
 #include "../includes/fdf.h"
-#include "../includes/defines.h"
+#include "../lib/libft/libft.h"
 #include "../includes/gnl.h"
 
 /*
@@ -42,14 +41,14 @@ int	main(int argc, char *argv[])
 	//t_meta	meta;
 	
 	int	fd;
-	char *line;
 	int	i;
+	char *line;
 
 	(void) argc;
 	fd = open(argv[1], O_RDONLY);
 	line = "";
 	i = 0;
-	while (i < 6)
+	while (i < 20)
 	{
 		line = get_next_line(fd);
 		if (!line)
@@ -61,6 +60,7 @@ int	main(int argc, char *argv[])
 	/*sys_init(&meta);
 	mlx_put_image_to_window(meta.vars.mlx,
 		meta.vars.win,
+
 		meta.data.img, 0, 0);
 	mlx_key_hook(meta.vars.win, esc_hook, &meta.vars);
 	mlx_loop(meta.vars.mlx);

@@ -10,8 +10,6 @@
 #                                                                              #
 # **************************************************************************** #
 
-#1. mejorar lib/libft
-
 NAME		=	fdf
 MLX_MAC		=	minilibx_macos/
 MLX_LI		=	mlx_linux/
@@ -32,7 +30,7 @@ FRAMEWORK	=	-framework OpenGL -framework AppKit
 CC			=	gcc
 CFLAGS		=	-Wall -Wextra -Werror -MMD
 
-RM			= rm -rf
+RM			= 	rm -rf
 
 ##########################################################################
 all: $(NAME)
