@@ -26,10 +26,14 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void    drawline(t_meta *meta);
 void	plot_line(t_meta *meta, t_point start, t_point end);
 
+/*      read_fd.c       */
+int	read_file(char *filename, t_map *map);
+
 
 /*		key_hooks		*/
 int		esc_hook(int keycode, t_vars *vars);
 
 /*      get_next_line.c */
 char    *get_next_line(int fd);
+
 #endif

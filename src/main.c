@@ -38,25 +38,12 @@ void	sys_init(t_meta *meta)
 
 int	main(int argc, char *argv[])
 {
-	//t_meta	meta;
-	
-	int	fd;
-	int	i;
-	char *line;
+	t_meta	meta;
+	(void)argc;
+	read_file(argv[1], &meta.map);
 
-	(void) argc;
-	fd = open(argv[1], O_RDONLY);
-	line = "";
-	i = 0;
-	while (i < 20)
-	{
-		line = get_next_line(fd);
-		if (!line)
-			break ;
-		printf("%s", line);
-		i++;
-	}
-	fd = close(fd);
+	
+
 	/*sys_init(&meta);
 	mlx_put_image_to_window(meta.vars.mlx,
 		meta.vars.win,

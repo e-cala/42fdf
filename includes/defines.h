@@ -44,6 +44,7 @@ typedef struct s_point {
 
 typedef struct s_map {
 	t_point	*points;
+	t_point	limits;
 }	t_map;
 
 typedef struct s_meta {
