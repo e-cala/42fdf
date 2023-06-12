@@ -41,7 +41,6 @@ int	main(int argc, char *argv[])
 	t_meta	meta;
 	(void)argc;
 	read_file(argv[1], &meta.map);
-
 	
 
 	/*sys_init(&meta);

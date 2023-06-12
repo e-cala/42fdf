@@ -44,8 +44,9 @@ $(NAME): libft $(OBJS) $(HEADER)
 linux: libft $(OBJS) $(HEADER)
 	$(CC) $(CFLAGS) -I $(HEADER) $(OBJS) $(MINILIBX_LI) $(LIBFT) -lXext -lX11 -lm -lz -o $(NAME)
 
+#quitar/poner el "-g" para debugear
 $(OBJ)/%.o: $(SRC)/%.c $(OBJ)
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) -g $(CFLAGS) -c $< -o $@
 
 $(OBJ):
 	mkdir $@
