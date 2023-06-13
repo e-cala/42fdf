@@ -14,6 +14,7 @@
 #include "../includes/fdf.h"
 #include "../lib/libft/libft.h"
 #include "../includes/gnl.h"
+#include "../includes/errors.h"
 
 /*
 1. Crear estructuras general, punto, vars, s_data, map
@@ -39,14 +40,26 @@ void	sys_init(t_meta *meta)
 int	main(int argc, char *argv[])
 {
 	t_meta	meta;
-	(void)argc;
-	read_file(argv[1], &meta.map);
-	
+
+	if (argc != 2)
+		err(ERR_ARGS);
+	read_file(argv[argc - 1], &meta.map);
+	printf("\n");
+	printf("total_size:		%i\n", meta.map.total_size);
+	printf("length:			%i\n", meta.map.len);
+	printf("color:			%i\n", meta.map.points->color);
+	printf("limits[X]:		%i\n", meta.map.limits.axis[X]);
+	printf("limits[Y]:		%i\n", meta.map.limits.axis[Y]);
+
+	sys_init(&meta);
+	draw_map(&meta);
+	mlx_key_hook(meta.vars.win, esc_hook, &meta.vars);
+	mlx_loop(meta.vars.mlx);
+	free(meta.vars.mlx);
 
 	/*sys_init(&meta);
 	mlx_put_image_to_window(meta.vars.mlx,
 		meta.vars.win,
-
 		meta.data.img, 0, 0);
 	mlx_key_hook(meta.vars.win, esc_hook, &meta.vars);
 	mlx_loop(meta.vars.mlx);

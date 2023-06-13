@@ -43,8 +43,10 @@ typedef struct s_point {
 }	t_point;
 
 typedef struct s_map {
-	t_point	*points;
-	int		total_size;
+	t_point		*points;
+	t_point		limits;
+	int			total_size;
+	int			len;
 }	t_map;
 
 typedef struct s_meta {

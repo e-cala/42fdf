@@ -39,4 +39,7 @@ char    *get_next_line(int fd);
 /*      errors.c        */
 void    free_double_pointer(char **ptr);
 
+/*      draw_map.c      */
+void    draw_map(t_meta *meta);
+
 #endif
