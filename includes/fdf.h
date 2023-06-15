@@ -20,18 +20,18 @@
 # include "defines.h"
 
 /*      utils.c         */
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void 	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 /*      plot_line.c     */
 void    drawline(t_meta *meta);
 void	plot_line(t_meta *meta, t_point start, t_point end);
 
 /*      read_fd.c       */
-int	read_file(char *filename, t_map *map);
+int	    read_file(char *filename, t_map *map);
 
 
 /*		key_hooks		*/
-int		esc_hook(int keycode, t_vars *vars);
+int		key_press(int keycode, t_meta *meta);
 
 /*      get_next_line.c */
 char    *get_next_line(int fd);
@@ -41,5 +41,6 @@ void    free_double_pointer(char **ptr);
 
 /*      draw_map.c      */
 void    draw_map(t_meta *meta);
+void    draw_points(t_meta *meta, t_point *copy_points);
 
 #endif

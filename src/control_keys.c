@@ -16,21 +16,13 @@
 #include "../includes/defines.h"
 #include "../includes/keycodes.h"
 
-// int esc_hook(int keycode, t_vars *vars)
-// {
-// 	if (keycode == KEY_ESC)
-// 		mlx_destroy_window(vars->mlx, vars->win);
-//     else if (keycode == 0)
-//         ft_putendl_fd("hello", 1);
-//     free(vars->mlx);
-//     return (0);
-// }
-
-int esc_hook(int keycode, t_vars *vars)
+int key_press(int keycode, t_meta *meta)
 {
-    (void) keycode;
-    free(vars->mlx);
-    mlx_destroy_window(vars->mlx, vars->win);
-    exit(0);
+    if (keycode == KEY_ESC)
+    {
+        mlx_destroy_window(meta->vars.mlx, meta->vars.win);
+        exit (0);
+    }
+    return (0);
 }
 

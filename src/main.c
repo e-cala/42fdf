@@ -52,17 +52,14 @@ int	main(int argc, char *argv[])
 	printf("limits[Y]:		%i\n", meta.map.limits.axis[Y]);
 
 	sys_init(&meta);
-	draw_map(&meta);
-	mlx_key_hook(meta.vars.win, esc_hook, &meta.vars);
+	mlx_key_hook(meta.vars.win, key_press, &meta.vars);
 	mlx_loop(meta.vars.mlx);
-	free(meta.vars.mlx);
-
-	/*sys_init(&meta);
+	
+	/* sys_init(&meta);
 	mlx_put_image_to_window(meta.vars.mlx,
 		meta.vars.win,
 		meta.data.img, 0, 0);
-	mlx_key_hook(meta.vars.win, esc_hook, &meta.vars);
-	mlx_loop(meta.vars.mlx);
-	free(meta.vars.mlx);*/
+	mlx_key_hook(meta.vars.win, key_press, &meta.vars);
+	mlx_loop(meta.vars.mlx); */
 	return (0);
 }

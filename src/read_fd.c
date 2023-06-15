@@ -45,8 +45,6 @@ void	valid_map(char *filename, t_map *map)
 	char	**split;
 	int		max_x;
 
-	(void)max_x;
-	(void)map;
 	fd = open(filename, O_RDONLY);
 	if (fd < 2)
 		err(ERR_NOMAP);
@@ -138,6 +136,6 @@ int	read_file(char *filename, t_map *map)
 		line = get_next_line(fd);
 		write(1, ".", 1);
 	}
-	free(map->points);
+	//free(map->points);
 	return (1);
 }
