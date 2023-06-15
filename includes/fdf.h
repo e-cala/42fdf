@@ -20,7 +20,7 @@
 # include "defines.h"
 
 /*      utils.c         */
-void 	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+int 	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 /*      plot_line.c     */
 void    drawline(t_meta *meta);
@@ -42,6 +42,7 @@ void    free_double_pointer(char **ptr);
 /*      draw_map.c      */
 void    draw_map(t_meta *meta);
 void    draw_points(t_meta *meta, t_point *copy_points);
+
 
 
 #endif

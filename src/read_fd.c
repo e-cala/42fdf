@@ -80,10 +80,6 @@ void	save_map_points(t_map *map, int	line_num, char *line)
 			err(ERR_MAP);
 		map->points[map->len].axis[Z] = ft_atoi(split[i]);
 		ft_load_color(map, split[i]);
-/* 		printf(">>%i %i %i\n", 
-		map->points[map->len].axis[X], 
-		map->points[map->len].axis[Y],
-		map->points[map->len].axis[Z]); */
 		i++;
 		map->len++;
 	}
@@ -110,7 +106,6 @@ int	read_file(char *filename, t_map *map)
 		line_num++;
 		free(line);
 		line = get_next_line(fd);
-		write(1, ".", 1);
 	}
 	return (1);
 }

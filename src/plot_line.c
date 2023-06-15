@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
-#include <math.h>
 
 void drawline(t_meta *meta)
 {

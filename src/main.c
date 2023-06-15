@@ -44,16 +44,20 @@ void	print_map(t_meta meta)
 	printf("length:			%i\n", meta.map.len);
 	printf("limits[X]:		%i\n", meta.map.limits.axis[X]);
 	printf("limits[Y]:		%i\n", meta.map.limits.axis[Y]);
-
 	for(int m = 0; m < meta.map.total_size; m++)
 	{
 		if (m % meta.map.limits.axis[X] == 0)
 			printf("\n");
 		printf("%3i", meta.map.points[m].axis[Z]);
-
 	}
 	printf("\n");
 }
+
+
+
+/****************************/
+
+
 
 int	main(int argc, char *argv[])
 {
@@ -63,13 +67,14 @@ int	main(int argc, char *argv[])
 		err(ERR_ARGS);
 	read_file(argv[argc - 1], &meta.map);
 	print_map(meta);
-	
 
-	
-
-	/*sys_init(&meta);
+	sys_init(&meta);
+	draw_map(&meta);
+	mlx_put_image_to_window(meta.vars.mlx,
+		meta.vars.win,
+		meta.data.img, 0, 0);
 	mlx_key_hook(meta.vars.win, key_press, &meta.vars);
-	mlx_loop(meta.vars.mlx);*/
+	mlx_loop(meta.vars.mlx);
 	
 	/* EXAMPLE
 	sys_init(&meta);
