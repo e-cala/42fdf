@@ -44,15 +44,3 @@ void	ft_free(char **s1, char **s2, char **s3)
 		*s3 = NULL;
 	}
 }
-
-void	*ft_calloc(size_t count, size_t size)
-{
-	char	*ptr;
-
-	ptr = malloc(count * size);
-	if (!ptr)
-		return (NULL);
-	while (count--)
-		ptr[count] = '\0';
-	return (ptr);
-}

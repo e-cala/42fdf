@@ -12,7 +12,6 @@ int	count_elems_line(char **split)
 		i++;
 	if (i == 0 || (i == 1 && split[0][0] == '\n'))
 		err(ERR_EMPTY);
-	printf("elems: %i ", i);
 	return (i);
 }
 
@@ -75,45 +74,22 @@ void	save_map_points(t_map *map, int	line_num, char *line)
 	split = ft_split(line, ' ');
 	while (split[i] && split[i][0] != '\n')
 	{
-		map->points[map->len].axis[X] = i - map->limits.axis[X] / 2;
-		map->points[map->len].axis[Y] = line_num - map->limits.axis[Y] / 2;
+		map->points[map->len].axis[X] = map->limits.axis[X] / 2;
+		map->points[map->len].axis[Y] = line_num- map->limits.axis[Y] / 2;
 		if (!ft_isdigit(split[i][0]) && split[i][0] != '-')
 			err(ERR_MAP);
 		map->points[map->len].axis[Z] = ft_atoi(split[i]);
 		ft_load_color(map, split[i]);
+/* 		printf(">>%i %i %i\n", 
+		map->points[map->len].axis[X], 
+		map->points[map->len].axis[Y],
+		map->points[map->len].axis[Z]); */
 		i++;
 		map->len++;
 	}
 	free_double_pointer(split);
 }
-/*
-int	read_file(char *filename, t_map *map)
-{
-	//int		line_number;
-	int		fd;
-	char	*line;
 
-	//line_number = 0;
-	map_init(map);
-	valid_map(filename, map);
-	map->points = ft_calloc(map->total_size, sizeof * map->points);
-	fd = open(filename, O_RDONLY);
-	if (fd < 2 || !map->points)
-		return (0);
-	line = "";
-	while (line)
-	{
-		line = get_next_line(fd);
-		if (!line)
-			break ;	
-		printf("%s", line);
-		free(line);
-		//line_number++;
-	}
-	free(map->points);
-	return (1);
-}
-*/
 int	read_file(char *filename, t_map *map)
 {
 	int		fd;
@@ -136,6 +112,5 @@ int	read_file(char *filename, t_map *map)
 		line = get_next_line(fd);
 		write(1, ".", 1);
 	}
-	//free(map->points);
 	return (1);
 }

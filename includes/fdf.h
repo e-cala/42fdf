@@ -43,4 +43,5 @@ void    free_double_pointer(char **ptr);
 void    draw_map(t_meta *meta);
 void    draw_points(t_meta *meta, t_point *copy_points);
 
+
 #endif
