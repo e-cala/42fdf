@@ -2,7 +2,7 @@
 #include "../includes/fdf.h"
 #include "../includes/defines.h"
 
-void    copy_map_points(t_point *src, t_point *dst, int total_size)
+static void    copy_map_points(t_point *src, t_point *dst, int total_size)
 {
     int i;
 
@@ -12,6 +12,20 @@ void    copy_map_points(t_point *src, t_point *dst, int total_size)
         dst[i] = src[i];
         i++;
     }
+}
+
+static void	center_point_in_window(int len, t_point *points, t_point distance)
+{
+	int	i;
+
+	i = 0;
+	while (i < len)
+	{
+		points[i].axis[X] += distance.axis[X];
+		points[i].axis[Y] += distance.axis[Y];
+		points[i].axis[Z] += distance.axis[Z];
+		i++;
+	}
 }
 
 void	draw_map_line(t_meta *meta, int len, t_map *map, t_point *proyected)
@@ -44,6 +58,7 @@ void    draw_map(t_meta *meta)
     
     copy_points = malloc(meta->map.total_size * sizeof * copy_points);
     copy_map_points(meta->map.points, copy_points, meta->map.total_size);
+    traslate_to_a_point(meta->map.total_size, copy_points, meta->map.source);
 	draw_map_line(meta, meta->map.total_size, &meta->map, copy_points);
     free(copy_points);
     mlx_put_image_to_window(meta->vars.mlx, meta->vars.win, meta->data.img, 0, 0);

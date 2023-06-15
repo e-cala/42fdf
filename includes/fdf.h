@@ -29,7 +29,6 @@ void	plot_line(t_meta *meta, t_point start, t_point end);
 /*      read_fd.c       */
 int	    read_file(char *filename, t_map *map);
 
-
 /*		key_hooks		*/
 int		key_press(int keycode, t_meta *meta);
 

@@ -21,6 +21,9 @@ void	map_init(t_map	*map)
 	map->limits.axis[X] = 0;
 	map->limits.axis[Y] = 0;
 	map->len = 0;
+	map->source.axis[X] = WIN_WIDTH / 2;
+	map->source.axis[Y] = WIN_HEIGHT / 2;
+	map->source.axis[Z] = 0;
 }
 
 void	ft_load_color(t_map *map, char *line)

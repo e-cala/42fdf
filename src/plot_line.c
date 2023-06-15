@@ -12,36 +12,6 @@
 
 #include "../includes/fdf.h"
 
-void drawline(t_meta *meta)
-{
-	int	dx;
-	int	dy;
-	int	p;
-	int	x;
-	int	y;
-
-	dx = meta->map.points[1].axis[X] - meta->map.points[0].axis[X];
-	dy = meta->map.points[1].axis[Y] - meta->map.points[0].axis[Y];
-	p = 2 * dy - dx;
-	x = meta->map.points[0].axis[X];
-	y = meta->map.points[1].axis[Y];
-	while (x < meta->map.points[1].axis[X])
-	{
-		if (p >= 0)
-		{
-			my_mlx_pixel_put(&meta->data, x, y, GREEN);
-			y = y + 1;
-			p = p + 2 * dy - 2 * dx;
-		}
-		else
-		{
-			my_mlx_pixel_put(&meta->data, x, y, GREEN);
-			p = p + 2 * dy;
-		}
-		x = x + 1;
-	}
-}
-
 static void	plot_line_high(t_meta *meta, t_point start, t_point end)
 {
 	t_point	delta;
