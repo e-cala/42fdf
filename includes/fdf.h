@@ -46,4 +46,9 @@ void    draw_points(t_meta *meta, t_point *copy_points);
 void    zoom(t_point *point, int len, float scale);
 void    ft_reduce_z(int len, t_point *points, float divisor);
 
+/***************/
+void    rotation_x(int len, t_point *points, t_point *projected, int ang);
+void    rotation_y(int len, t_point *points, t_point *projected, int ang);
+void    rotation_z(int len, t_point *points, t_point *projected, int ang);
+
 #endif

@@ -20,6 +20,9 @@ void	map_init(t_map	*map)
 	map->total_size = 0;
 	map->limits.axis[X] = 0;
 	map->limits.axis[Y] = 0;
+	map->ang[X] = 0;
+	map->ang[Y] = 0;
+	map->ang[Z] = 0;
 	map->len = 0;
 	map->source.axis[X] = WIN_WIDTH / 2;
 	map->source.axis[Y] = WIN_HEIGHT / 2;

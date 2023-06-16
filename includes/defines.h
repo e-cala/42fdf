@@ -52,6 +52,7 @@ typedef struct s_map {
 	int			len;
 	float		divisor;
 	float		scale;
+	float		ang[3];
 }	t_map;
 
 typedef struct s_meta {

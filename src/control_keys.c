@@ -23,11 +23,21 @@ int key_press(int keycode, t_meta *meta)
         mlx_destroy_window(meta->vars.mlx, meta->vars.win);
         exit (0);
     }
-    if (keycode == KEY_Z)
+    if (keycode == KEY_UP)
+        meta->map.ang[X] += 10;
+    if (keycode == KEY_DOWN)
+        meta->map.ang[X] -= 10;
+    if (keycode == KEY_RIGHT)
+        meta->map.ang[Y] += 10;
+    if (keycode == KEY_LEFT)
+        meta->map.ang[Y] -= 10;
+    if (keycode == KEY_I)
     {
-        meta->map.points[0].axis[X] += 10;
-        meta->map.divisor += 1;
+        meta->map.ang[X] = 30;
+        meta->map.ang[Y] = 330;
+        meta->map.ang[Z] = 30;
     }
+    printf("%i\n", keycode);
     draw_map(meta);
     return (0);
 }
