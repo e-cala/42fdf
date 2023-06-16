@@ -28,13 +28,13 @@ This is the sequence of problems that has been addressed to solve the project.
 ```bash
 $ gcc -I<minilibx dir> <src/*.c> -L<minilibx dir> -lmlx -framework OpenGL -framework AppKit
 ```
-**Examples**
+### Examples
 
-**Method 1**
+##### Method 1
 ```bash
 $ gcc -Iminilibx_macos src/main.c -Lminilibx_macos -lmlx -framework OpenGL -framework ApptKit
 ```
-**Method 2**
+##### Method 2
 ```bash
 $ gcc src/main.c -L./minilibx_macos -lmlx -framework OpenGL -framework AppKit
 ```
