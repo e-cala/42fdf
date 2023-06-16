@@ -42,6 +42,8 @@ void    free_double_pointer(char **ptr);
 void    draw_map(t_meta *meta);
 void    draw_points(t_meta *meta, t_point *copy_points);
 
-
+/*      transformations.c*/
+void    zoom(t_point *point, int len, float scale);
+void    ft_reduce_z(int len, t_point *points, float divisor);
 
 #endif

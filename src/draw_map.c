@@ -28,7 +28,7 @@ static void	center_point_in_window(int len, t_point *points, t_point distance)
 	}
 }
 
-void	draw_map_line(t_meta *meta, int len, t_map *map, t_point *proyected)
+void	draw_line(t_meta *meta, int len, t_map *map, t_point *proyected)
 {
 	int	i;
 
@@ -50,16 +50,36 @@ void	draw_map_line(t_meta *meta, int len, t_map *map, t_point *proyected)
 	}
 }
 
+void    black_background(t_data *data)
+{
+    int x;
+    int y;
 
+    x = 0;
+    y = 0;
+    while (y <= WIN_HEIGHT)
+    {
+        x = 0;
+        while (x <= WIN_WIDTH)
+        {
+            my_mlx_pixel_put(data, x, y, BLACK);
+            x++;
+        }
+        y++;
+    }
+}
 
 void    draw_map(t_meta *meta)
 {
     t_point *copy_points;
     
     copy_points = malloc(meta->map.total_size * sizeof * copy_points);
+    black_background(&meta->data);
     copy_map_points(meta->map.points, copy_points, meta->map.total_size);
-    traslate_to_a_point(meta->map.total_size, copy_points, meta->map.source);
-	draw_map_line(meta, meta->map.total_size, &meta->map, copy_points);
+    //ft_reduce_z(meta->map.total_size, copy_points, meta->map.divisor);
+    //zoom(copy_points, meta->map.total_size, meta->map.scale);
+    center_point_in_window(meta->map.total_size, copy_points, meta->map.source);
+    draw_line(meta, meta->map.total_size, &meta->map, copy_points);
     free(copy_points);
     mlx_put_image_to_window(meta->vars.mlx, meta->vars.win, meta->data.img, 0, 0);
 }
@@ -73,8 +93,8 @@ void	draw_points(t_meta *meta, t_point *copy_points)
 	i = 0;
 	while (i < meta->map.total_size)
 	{
-		my_mlx_pixel_put(&meta->data, copy_points[i].axis[X] + WIN_WIDTH / 2, \
-			copy_points[i].axis[Y] + WIN_HEIGHT / 2, YELLOW);
+		my_mlx_pixel_put(&meta->data, 30*copy_points[i].axis[X] + WIN_WIDTH / 2, \
+			30*copy_points[i].axis[Y] + WIN_HEIGHT / 2, copy_points[i].color);
 		i++;
 	}
 }   

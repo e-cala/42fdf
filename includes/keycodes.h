@@ -4,5 +4,6 @@
 
 //# define KEY_ESC 53
 # define KEY_ESC 65307
+# define KEY_Z 122
 
 #endif

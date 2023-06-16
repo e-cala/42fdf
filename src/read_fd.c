@@ -24,6 +24,8 @@ void	map_init(t_map	*map)
 	map->source.axis[X] = WIN_WIDTH / 2;
 	map->source.axis[Y] = WIN_HEIGHT / 2;
 	map->source.axis[Z] = 0;
+	map->divisor = 1;
+	map->scale = 1;
 }
 
 void	ft_load_color(t_map *map, char *line)
@@ -77,8 +79,9 @@ void	save_map_points(t_map *map, int	line_num, char *line)
 	split = ft_split(line, ' ');
 	while (split[i] && split[i][0] != '\n')
 	{
-		map->points[map->len].axis[X] = map->limits.axis[X] / 2;
-		map->points[map->len].axis[Y] = line_num- map->limits.axis[Y] / 2;
+		//TODO:	HARDCODED VALUES x30 PARA SEPARAR LOS PUNTOS --> FIX 
+		map->points[map->len].axis[X] = 30 * (i - map->limits.axis[X] / 2);
+		map->points[map->len].axis[Y] = 30 * (line_num - map->limits.axis[Y] / 2);
 		if (!ft_isdigit(split[i][0]) && split[i][0] != '-')
 			err(ERR_MAP);
 		map->points[map->len].axis[Z] = ft_atoi(split[i]);

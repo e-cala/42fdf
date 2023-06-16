@@ -23,6 +23,8 @@
 # define RED 	0x0FF0000
 # define YELLOW 0x0FFFF00
 # define GREEN 	0x0FF000
+# define BLACK	0x0000000
+
 
 typedef struct s_data {
 	void	*img;
@@ -48,6 +50,8 @@ typedef struct s_map {
 	t_point		source;
 	int			total_size;
 	int			len;
+	float		divisor;
+	float		scale;
 }	t_map;
 
 typedef struct s_meta {

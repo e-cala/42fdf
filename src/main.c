@@ -48,7 +48,10 @@ void	print_map(t_meta meta)
 	{
 		if (m % meta.map.limits.axis[X] == 0)
 			printf("\n");
-		printf("%3i", meta.map.points[m].axis[Z]);
+		printf("{%i %3i %3i} ", 
+		30 * meta.map.points[m].axis[X] + WIN_WIDTH / 2,
+		30 * meta.map.points[m].axis[Y] + WIN_HEIGHT / 2,
+		meta.map.points[m].axis[Z]);
 	}
 	printf("\n");
 }
@@ -62,13 +65,22 @@ void	print_map(t_meta meta)
 int	main(int argc, char *argv[])
 {
 	t_meta	meta;
-
+/* 	t_point start;
+	t_point end;
+	start.axis[X] = 210;
+	start.axis[Y] = 210;
+	end.axis[X] = 480;
+	end.axis[Y] = 480;
+	start.color = GREEN;
+ */
 	if (argc != 2)
 		err(ERR_ARGS);
 	read_file(argv[argc - 1], &meta.map);
 	print_map(meta);
 
 	sys_init(&meta);
+	/*draw_points(&meta, meta.map.points);
+	plot_line(&meta, start, end);*/
 	draw_map(&meta);
 	mlx_put_image_to_window(meta.vars.mlx,
 		meta.vars.win,

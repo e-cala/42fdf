@@ -23,6 +23,12 @@ int key_press(int keycode, t_meta *meta)
         mlx_destroy_window(meta->vars.mlx, meta->vars.win);
         exit (0);
     }
+    if (keycode == KEY_Z)
+    {
+        meta->map.points[0].axis[X] += 10;
+        meta->map.divisor += 1;
+    }
+    draw_map(meta);
     return (0);
 }
 
