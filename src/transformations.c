@@ -20,9 +20,9 @@ void    zoom(t_point *point, int len, float scale)
     i = 0;
     while (i < len)
     {
-        point->axis[X] *= scale;
-        point->axis[Y] *= scale;
-        point->axis[Z] *= scale;
+        point[i].axis[X] *= scale;
+        point[i].axis[Y] *= scale;
+        point[i].axis[Z] *= scale;
         i++;
     }
 }

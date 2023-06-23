@@ -50,5 +50,6 @@ void    ft_reduce_z(int len, t_point *points, float divisor);
 void    rotation_x(int len, t_point *points, t_point *projected, int ang);
 void    rotation_y(int len, t_point *points, t_point *projected, int ang);
 void    rotation_z(int len, t_point *points, t_point *projected, int ang);
+int     ft_mouse_down(int mousecode, int x, int y, t_meta *meta);
 
 #endif

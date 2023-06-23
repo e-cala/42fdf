@@ -17,14 +17,12 @@
 #include "../includes/errors.h"
 
 /*
-1. Crear estructuras general, punto, vars, s_data, map
-2. Drawline
+TODO: 
 3. Funciion zoom
-4. Cargar mapa
-5. Crear hooks rotar cubo - rotacion / escala / posicion
+6. Al clicar la X se cierre
+7. Los puntos negativos también se visualizen
 */
 
-// projection matrix
 void	sys_init(t_meta *meta)
 {
 	meta->vars.mlx = mlx_init();
@@ -65,33 +63,15 @@ void	print_map(t_meta meta)
 int	main(int argc, char *argv[])
 {
 	t_meta	meta;
-/* 	t_point start;
-	t_point end;
-	start.axis[X] = 210;
-	start.axis[Y] = 210;
-	end.axis[X] = 480;
-	end.axis[Y] = 480;
-	start.color = GREEN;
- */
+
 	if (argc != 2)
 		err(ERR_ARGS);
 	read_file(argv[argc - 1], &meta.map);
 	print_map(meta);
-
 	sys_init(&meta);
 	draw_map(&meta);
-	/*draw_points(&meta, meta.map.points);
-	plot_line(&meta, start, end);*/
-	//draw_map(&meta);
 	mlx_key_hook(meta.vars.win, key_press, &meta.vars);
+	mlx_mouse_hook(meta.vars.win, ft_mouse_down, &meta.vars);
 	mlx_loop(meta.vars.mlx);
-	
-	/* EXAMPLE
-	sys_init(&meta);
-	mlx_put_image_to_window(meta.vars.mlx,
-		meta.vars.win,
-		meta.data.img, 0, 0);
-	mlx_key_hook(meta.vars.win, key_press, &meta.vars);
-	mlx_loop(meta.vars.mlx); */
 	return (0);
 }

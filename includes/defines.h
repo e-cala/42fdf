@@ -12,6 +12,7 @@
 
 #ifndef DEFINES_H
 # define DEFINES_H
+# include <stdbool.h>
 
 # define WIN_WIDTH  720 //1920
 # define WIN_HEIGHT 720 // 1080
@@ -55,10 +56,17 @@ typedef struct s_map {
 	float		ang[3];
 }	t_map;
 
+typedef struct s_mouse {
+		bool	left_click;
+		t_point	prev_click_l;
+
+}		t_mouse;
+
 typedef struct s_meta {
 	t_vars	vars;
 	t_data	data;
 	t_map	map;
+	t_mouse	mouse;
 }	t_meta;
 
 #endif

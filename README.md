@@ -43,8 +43,8 @@ $ gcc src/main.c -L./minilibx_macos -lmlx -framework OpenGL -framework AppKit
 - https://harm-smits.github.io/42docs/libs/minilibx/getting_started.html
 - https://aurelienbrabant.fr/blog/getting-started-with-the-minilibx
 - https://www.youtube.com/watch?v=p4Iz0XJY-Qk
-- https://en.wikipedia.org/wiki/Bresenham's_line_algorithm#All_cases
-- https://github.dev/albagg3/42_FdF/tree/main
+- https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm
+- [GDB Tutorial](http://www.unknownroad.com/rtfm/gdbtut/gdbtoc.html)
 
 ## Tutorials:
 - [FdF walkthrough](https://www.youtube.com/watch?v=10P59aOgi68&t=256s&ab_channel=%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B9%D0%A1%D0%A4%D0%B0%D0%BC%D0%B8%D0%BB%D0%B8%D0%B5%D0%B9)

@@ -77,11 +77,11 @@ void    draw_map(t_meta *meta)
     copy_points = malloc(meta->map.total_size * sizeof * copy_points);
     black_background(&meta->data);
     copy_map_points(meta->map.points, copy_points, meta->map.total_size);
-    //ft_reduce_z(meta->map.total_size, copy_points, meta->map.divisor);
-    //zoom(copy_points, meta->map.total_size, meta->map.scale);
+    ft_reduce_z(meta->map.total_size, copy_points, meta->map.divisor);
     rotation_x(meta->map.total_size, copy_points, copy_points, meta->map.ang[X]);
     rotation_y(meta->map.total_size, copy_points, copy_points, meta->map.ang[Y]);
     rotation_z(meta->map.total_size, copy_points, copy_points, meta->map.ang[Z]);
+    zoom(copy_points, meta->map.total_size, meta->map.scale);
     center_point_in_window(meta->map.total_size, copy_points, meta->map.source);
     draw_line(meta, meta->map.total_size, &meta->map, copy_points);
     free(copy_points);

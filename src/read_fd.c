@@ -42,7 +42,7 @@ void	ft_load_color(t_map *map, char *line)
 		free_double_pointer(color);
 	}
 	else
-		map->points[map->len].color = YELLOW;
+		map->points[map->len].color = WHITE;
 }
 
 void	valid_map(char *filename, t_map *map)
@@ -83,8 +83,9 @@ void	save_map_points(t_map *map, int	line_num, char *line)
 	while (split[i] && split[i][0] != '\n')
 	{
 		//TODO:	HARDCODED VALUES x30 PARA SEPARAR LOS PUNTOS --> FIX 
-		map->points[map->len].axis[X] = 30 * (i - map->limits.axis[X] / 2);
-		map->points[map->len].axis[Y] = 30 * (line_num - map->limits.axis[Y] / 2);
+		map->points[map->len].axis[X] =  30 * (i - map->limits.axis[X] / 2);
+		//TODO:	HARDCODED VALUES x30 PARA SEPARAR LOS PUNTOS --> FIX 
+		map->points[map->len].axis[Y] =  30 * (line_num - map->limits.axis[Y] / 2);
 		if (!ft_isdigit(split[i][0]) && split[i][0] != '-')
 			err(ERR_MAP);
 		map->points[map->len].axis[Z] = ft_atoi(split[i]);
