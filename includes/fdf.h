@@ -37,6 +37,8 @@ char    *get_next_line(int fd);
 
 /*      errors.c        */
 void    free_double_pointer(char **ptr);
+int	    ft_destroy_window(t_vars *vars);
+void    err(char *str);
 
 /*      draw_map.c      */
 void    draw_map(t_meta *meta);

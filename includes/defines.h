@@ -12,10 +12,11 @@
 
 #ifndef DEFINES_H
 # define DEFINES_H
+
 # include <stdbool.h>
 
-# define WIN_WIDTH  720 //1920
-# define WIN_HEIGHT 720 // 1080
+# define WIN_WIDTH  1920
+# define WIN_HEIGHT 1080
 # define X 0
 # define Y 1
 # define Z 2
@@ -38,7 +39,7 @@ typedef struct s_data {
 typedef struct s_vars {
 	void	*mlx;
 	void	*win;
-}t_vars;
+}	t_vars;
 
 typedef struct s_point {
 	int	axis[3];

@@ -58,8 +58,6 @@ void	print_map(t_meta meta)
 
 /****************************/
 
-
-
 int	main(int argc, char *argv[])
 {
 	t_meta	meta;
@@ -72,6 +70,9 @@ int	main(int argc, char *argv[])
 	draw_map(&meta);
 	mlx_key_hook(meta.vars.win, key_press, &meta.vars);
 	mlx_mouse_hook(meta.vars.win, ft_mouse_down, &meta.vars);
+
+	mlx_hook(meta.vars.win, 17, 0, ft_destroy_window, &meta.vars);
+
 	mlx_loop(meta.vars.mlx);
 	return (0);
 }

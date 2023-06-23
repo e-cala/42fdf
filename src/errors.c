@@ -1,4 +1,6 @@
 #include "../lib/libft/libft.h"
+#include "../includes/defines.h"
+#include "../lib/minilibx_macos/mlx.h"
 
 
 void    err(char *str)
@@ -21,5 +23,12 @@ void    free_double_pointer(char **ptr)
         i++;
     }
     free(ptr);
+}
+
+int	ft_destroy_window(t_vars *vars)
+{
+	mlx_destroy_window(vars->mlx, vars->win);
+	exit(0);
+	return (0);
 }
 
