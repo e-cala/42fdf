@@ -1,7 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   read_fd.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ecabanas <ecabanas@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/26 09:53:21 by ecabanas          #+#    #+#             */
+/*   Updated: 2023/06/26 09:56:04 by ecabanas         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/gnl.h"
 #include "../includes/fdf.h"
 #include "../includes/errors.h"
-
 
 int	count_elems_line(char **split)
 {
@@ -15,26 +26,10 @@ int	count_elems_line(char **split)
 	return (i);
 }
 
-void	map_init(t_map	*map)
-{
-	map->total_size = 0;
-	map->limits.axis[X] = 0;
-	map->limits.axis[Y] = 0;
-	map->ang[X] = 0;
-	map->ang[Y] = 0;
-	map->ang[Z] = 0;
-	map->len = 0;
-	map->source.axis[X] = WIN_WIDTH / 2;
-	map->source.axis[Y] = WIN_HEIGHT / 2;
-	map->source.axis[Z] = 0;
-	map->divisor = 1;
-	map->scale = 1;
-}
-
 void	ft_load_color(t_map *map, char *line)
 {
 	char	**color;
-	
+
 	if (ft_strchr(line, ',') != 0)
 	{
 		color = ft_split(line, ',');
@@ -73,7 +68,7 @@ void	valid_map(char *filename, t_map *map)
 	close(fd);
 }
 
-void	save_map_points(t_map *map, int	line_num, char *line)
+void	save_map_points(t_map *map, int line_num, char *line)
 {
 	int		i;
 	char	**split;
@@ -82,10 +77,10 @@ void	save_map_points(t_map *map, int	line_num, char *line)
 	split = ft_split(line, ' ');
 	while (split[i] && split[i][0] != '\n')
 	{
-		//TODO:	HARDCODED VALUES x30 PARA SEPARAR LOS PUNTOS --> FIX 
-		map->points[map->len].axis[X] =  30 * (i - map->limits.axis[X] / 2);
-		//TODO:	HARDCODED VALUES x30 PARA SEPARAR LOS PUNTOS --> FIX 
-		map->points[map->len].axis[Y] =  30 * (line_num - map->limits.axis[Y] / 2);
+		map->points[map->len].axis[X] = 30
+			* (i - map->limits.axis[X] / 2);
+		map->points[map->len].axis[Y] = 30
+			* (line_num - map->limits.axis[Y] / 2);
 		if (!ft_isdigit(split[i][0]) && split[i][0] != '-')
 			err(ERR_MAP);
 		map->points[map->len].axis[Z] = ft_atoi(split[i]);

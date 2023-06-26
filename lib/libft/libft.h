@@ -24,6 +24,8 @@ typedef struct s_list
 }	t_list;
 
 /* libc */
+int			ft_abs(int num);
+
 int			ft_isalpha(int c);
 
 int			ft_isdigit(int c);

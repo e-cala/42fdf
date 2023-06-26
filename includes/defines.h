@@ -6,7 +6,7 @@
 /*   By: ecabanas <ecabanas@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 17:13:15 by ecabanas          #+#    #+#             */
-/*   Updated: 2023/03/15 17:13:16 by ecabanas         ###   ########.fr       */
+/*   Updated: 2023/06/26 10:55:37 by ecabanas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@
 # define YELLOW 0x0FFFF00
 # define GREEN 	0x0FF000
 # define BLACK	0x0000000
-
 
 typedef struct s_data {
 	void	*img;
@@ -58,8 +57,8 @@ typedef struct s_map {
 }	t_map;
 
 typedef struct s_mouse {
-		bool	left_click;
-		t_point	prev_click_l;
+	bool	left_click;
+	t_point	prev_click_l;
 
 }		t_mouse;
 

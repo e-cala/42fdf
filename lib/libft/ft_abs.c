@@ -1,46 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gnl_utils.c                                        :+:      :+:    :+:   */
+/*   ft_abs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ecabanas <ecabanas@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/29 10:33:03 by ecabanas          #+#    #+#             */
-/*   Updated: 2023/06/26 09:39:11 by ecabanas         ###   ########.fr       */
+/*   Created: 2023/06/26 10:10:40 by ecabanas          #+#    #+#             */
+/*   Updated: 2023/06/26 10:10:53 by ecabanas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/gnl.h"
+#include "libft.h"
 
-int	ft_found_newline(char *s)
+int	ft_abs(int num)
 {
-	int	i;
-
-	i = 0;
-	while (s[i])
-	{
-		if (s[i] == '\n')
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-void	ft_free(char **s1, char **s2, char **s3)
-{
-	if (s1 && *s1)
-	{
-		free(*s1);
-		*s1 = NULL;
-	}
-	if (s2 && *s2)
-	{
-		free(*s2);
-		*s2 = NULL;
-	}
-	if (s3 && *s3)
-	{
-		free(*s3);
-		*s3 = NULL;
-	}
+	if (num < 0)
+		return (-num);
+	return (num);
 }

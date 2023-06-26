@@ -6,7 +6,7 @@
 /*   By: ecabanas <ecabanas@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 10:38:26 by ecabanas          #+#    #+#             */
-/*   Updated: 2023/04/29 10:39:06 by ecabanas         ###   ########.fr       */
+/*   Updated: 2023/06/26 10:57:39 by ecabanas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ void	ft_free(char **s1, char **s2, char **s3);
 void	*ft_calloc(size_t count, size_t size);
 
 /*      errors.c        */
-void    err(char *str);
+void	err(char *str);
 
 #endif

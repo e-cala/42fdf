@@ -6,10 +6,9 @@
 /*   By: ecabanas <ecabanas@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 10:40:00 by ecabanas          #+#    #+#             */
-/*   Updated: 2023/04/29 10:40:05 by ecabanas         ###   ########.fr       */
+/*   Updated: 2023/06/26 09:39:30 by ecabanas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../includes/gnl.h"
 
